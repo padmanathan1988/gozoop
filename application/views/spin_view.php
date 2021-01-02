@@ -88,7 +88,7 @@
                 </div>
                 <div style="margin-top:20px" class="row all_products text-center <?php echo $user_details['total_points'] == 0 ? 'hide' : '' ?>">
               
-                <?php if ($products != false) { ?>
+                
                     <?php foreach ($products as $product) { ?>
                         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 " >
                             <div class="product_block" style="position:relative">
@@ -103,7 +103,7 @@
                             </div>
                         </div>
                     <?php } ?>
-                <?php } ?>
+               
             </div>
             </div> 
         </div>

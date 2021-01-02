@@ -3,7 +3,7 @@
 class Spin_model extends CI_Model {
 
     function validateCredentials($username, $password) {
-        $q = $this->db->get_where('user', array('email_address' => $username, 'password' => $password, 'status' => 1));
+        $q = $this->db->get_where('user', array('email_address' => $username, 'password' => $password, 'status' => '1'));
       
         if ($q->num_rows() > 0) {
             return $q->row_array();
@@ -13,7 +13,7 @@ class Spin_model extends CI_Model {
     }
 
     function getImages() {
-        $q = $this->db->get_where('image', array('status' => 1));
+        $q = $this->db->get_where('image', array('status' => '1'));
         if ($q->num_rows() > 0) {
             foreach ($q->result_array() as $row) {
                 $r[$row['id']] = $row;
@@ -24,7 +24,7 @@ class Spin_model extends CI_Model {
     }
 
     function getMeta() {
-        $q = $this->db->get_where('meta', array('status' => 1));
+        $q = $this->db->get_where('meta', array('status' => '1'));
         if ($q->num_rows() > 0) {
             foreach ($q->result_array() as $row) {
                 $r[$row['meta_name']] = $row['meta_value'];
@@ -37,7 +37,7 @@ class Spin_model extends CI_Model {
     function getLastAttemptedSpinCounts($userid, $maximum_attempts, $interval_minutes) {
         //$current_time = time();
         $check_time = date("Y-m-d H:i:s", time() - ($interval_minutes * 60));
-        $q = $this->db->get_where('spin', array('user_id' => $userid, 'created_at >=' => $check_time, 'status' => 1));
+        $q = $this->db->get_where('spin', array('user_id' => $userid, 'created_at >=' => $check_time, 'status' => '1'));
         return $q->num_rows();
     }
 
@@ -46,7 +46,7 @@ class Spin_model extends CI_Model {
     }
 
     function getUserDetails($userid) {
-        $q = $this->db->get_where('user', array('id' => $userid, 'status' => 1));
+        $q = $this->db->get_where('user', array('id' => $userid, 'status' => '1'));
         if ($q->num_rows() > 0) {
             return $q->row_array();
         }
@@ -68,7 +68,7 @@ class Spin_model extends CI_Model {
     }
 
     function getProducts() {
-        $q = $this->db->get_where('product', array('status' => 1));
+        $q = $this->db->get_where('product', array('status' => '1'));
         if ($q->num_rows() > 0) {
             foreach ($q->result_array() as $row) {
                 $r[$row['id']] = $row;
@@ -79,7 +79,7 @@ class Spin_model extends CI_Model {
     }
 
     function getUserProducts($userid) {
-        $q = $this->db->get_where('user_product', array('user_id' => $userid, 'status' => 1));
+        $q = $this->db->get_where('user_product', array('user_id' => $userid, 'status' => '1'));
         if ($q->num_rows() > 0) {
             foreach ($q->result_array() as $row) {
                 $r[$row['product_id']][] = $row;
@@ -90,7 +90,7 @@ class Spin_model extends CI_Model {
     }
 
     function getProductDetails($product_id) {
-        $q = $this->db->get_where('product', array('id' => $product_id, 'status' => 1));
+        $q = $this->db->get_where('product', array('id' => $product_id, 'status' => '1'));
         if ($q->num_rows() > 0) {
             return $q->row_array();
         }
@@ -102,7 +102,7 @@ class Spin_model extends CI_Model {
     }
 
     function getProductCount($userid, $product_id) {
-        $q = $this->db->get_where('user_product', array('user_id' => $userid, 'product_id' => $product_id, 'status' => 1));
+        $q = $this->db->get_where('user_product', array('user_id' => $userid, 'product_id' => $product_id, 'status' => '1'));
         return $q->num_rows();
     }
 

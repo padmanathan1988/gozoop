@@ -28,6 +28,7 @@ class Spin extends CI_Controller {
         $data['meta'] = $this->spin_model->getMeta();
         $data['user_details'] = $this->spin_model->getUserDetails($this->session->userdata('userid'));
         $data['products'] = $this->spin_model->getProducts();
+       
         if ($data['images'] == false || $data['meta'] == false || $data['user_details'] == false) {
             exit("something wrong");
         }
@@ -58,7 +59,6 @@ class Spin extends CI_Controller {
                 $res['allowed'] = true;
                 $add_user_product['user_id'] = $user_details['id'];
                 $add_user_product['product_id'] = $product_id;
-                $add_user_product['created_by'] = $user_details['id'];
                 $add_user_product['created_at'] = date("Y-m-d H:i:s");
                 $this->spin_model->addUserProduct($add_user_product);
 
@@ -80,7 +80,7 @@ class Spin extends CI_Controller {
         //$res['q'] = $this->db->last_query();
         if ($user_details == false || $images == false || $meta == false) {
             $res['setup'] = false;
-        } else if ($attempted_spin_count > 3) {
+        } else if ($attempted_spin_count >= 3) {
             $res['allowed'] = false;
             $res['setup'] = true;
             $last_attempted_spin_date = $this->spin_model->getLastAttemptedSpinDate($user_details['id']);
@@ -107,7 +107,7 @@ class Spin extends CI_Controller {
             }
             $res['points_earned'] = $add_user_spin['points_earned'];
             $add_user_spin['user_id'] = $this->session->userdata('userid');
-            $add_user_spin['created_by'] = $this->session->userdata('userid');
+
             $add_user_spin['created_at'] = date('Y-m-d H:i:s');
             $this->spin_model->addSpin($add_user_spin);
 
