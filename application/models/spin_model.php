@@ -12,6 +12,8 @@ class Spin_model extends CI_Model {
         return false;
     }
 
+
+
     function getImages() {
         $q = $this->db->get_where('image', array('status' => '1'));
         if ($q->num_rows() > 0) {

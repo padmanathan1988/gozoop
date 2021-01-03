@@ -22,6 +22,7 @@ class Spin extends CI_Controller {
         }
     }
 
+
     public function index() {
         //$this->load->view('welcome_message');
         $data['images'] = $this->spin_model->getImages();

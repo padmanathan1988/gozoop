@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Lets Spin</title>
-        <!-- Latest compiled and minified CSS -->
-<!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">-->
+        <title>GoZoop Spin</title>
 
-        <!-- Optional theme -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <style>
             .spin-image img{
